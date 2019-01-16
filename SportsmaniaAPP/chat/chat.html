@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chatApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Reg system</title>
+    <div align="center"><h1 style=" font-family: verdana;color: darkgreen;background-color: white;font-size:55px;">SPORTSMANIA</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script>
+    var config = {
+    apiKey: "AIzaSyB1U2BccSuU96ok87fJOk-cidH4aGggCWI",
+    authDomain: "sportsmania-aa59d.firebaseapp.com",
+    databaseURL: "https://sportsmania-aa59d.firebaseio.com",
+    projectId: "sportsmania-aa59d",
+    storageBucket: "sportsmania-aa59d.appspot.com",
+    messagingSenderId: "807409288694"
+  };
+  firebase.initializeApp(config);
+
+
+
+var app = angular.module('chatApp', ['firebase']);
+
+app.controller('ChatController', function($scope, $firebaseArray) {
+    var ref = firebase.database().ref().child('messages');
+    $scope.messages = $firebaseArray(ref);
+    $name="Admin"
+
+    $scope.send = function() {
+        $scope.messages.$add({
+            message: $scope.messageText,
+            name: $name
+        })
+    }
+
+
+})
+
+</script>
+    
+  <script src="https://cdn.firebase.com/libs/angularfire/2.2.0/angularfire.min.js"></script>
+    
+
+<style>
+body {
+  margin: 0;height: 100%;width: 100%;overflow-x: hidden;
+}
+
+button{
+ margin-top: 20px;
+ transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 50px;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+  
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+input{
+
+  font-size: 100%;
+  width: 40%;
+  height:50px; 
+}
+
+
+</style>
+</head>
+
+<body ng-controller="ChatController" bgcolor= "lightblue">
+
+
+<div align="left" style="width: 25%; font-size: 40px;">
+<ul>
+  <li><a class="active" href="../admin/admin.html">Home</a></li>
+  <li><a action="self" href="../eventlist/el.html">Event List</a></li>
+  <li><a href="../chat/index.html">LIVE Chat</a></li>
+  <li><a href="">tp</a></li>
+</ul>
+</div>
+
+<div id="scrollme" style="align-self: right;width: 75%;margin-left: 27%;margin-top:3%;font-size: 25px; overflow: auto;max-width: 65%;max-height: 600px;font-weight: bold;border: solid;border-color: white;">
+            <div class="panel-body">
+                <p ng-repeat="m in messages">{{m.message}}<br> ~{{m.name}}</p>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Message here..." ng-model="messageText" id="myform" required="">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="send()">Send</button>
+                <button id="clear">Clear</button>
+            </div>
+</div>
+
+<div class="footer" align="right" style="position: bottom;margin-top: 3%;margin-right: 10px;"><p>Created by : Sairaj Adkar</p></div>
+
+</body>
+<script type="text/javascript">
+  document.getElementById("myform").onclick = clear ;
+  function clear()
+  {
+    document.getElementById("myform").value = " " ;
+  }
+</script>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reg system</title>
+  <header>
+    <div align="center"><h1 style=" font-family: verdana;color: darkgreen;background-color: white;font-size:55px;">SPORTSMANIA</div>
+  </header>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+
+
+<style>
+body {
+  margin: 0;height: 100%;width: 100%;overflow-x: hidden;
+}
+
+#save{
+ margin-top: 20px;
+ transition: all 0.5s;
+  cursor: pointer;
+  align-self: center;
+  height: 60px;
+  width: 150px;
+  margin-left: 50%;
+  font-size: 150%;
+}
+
+
+ul {
+  
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+  
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+input{
+
+  font-size: 100%;
+  width: 40%;
+  height:50px; 
+  margin-left: 1%;
+
+ }
+
+ h2{
+
+  margin-left: 12%;
+ }
+
+
+
+</style>
+</head>
+<body bgcolor= "lightblue">
+<div align="left" style="width: 25%; font-size: 40px;">
+<ul style="list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;">
+  <li><a class="active" href="../admin/admin.html">Home</a></li>
+  <li><a action="self" href="../eventlist/el.html">Event List</a></li>
+  <li><a href="../chat/chat.html">LIVE Chat</a></li>
+  <li><a href="">tp</a></li>
+</ul>
+</div>
+
+ <div style="align-self: right;width: 75%;margin-left: 30%;margin-top:3%;">
+  <div style="align-content: center;">
+    <header><h1 style="margin-left: 30%">THROWBALL</h1> </header>
+    <form>
+      <h2>Name of college:<input type="text" id="name" placeholder="College / Name of player" required=""></h2>
+
+      <h2>Number on slip: <input  type="number" maxlength="4" id="slip" placeholder="Reciept number" required=""></h2>
+
+      <h2>Amount paid ₹ : <input  type="number" maxlength="5" id="amount" placeholder="Paid" required=""></h2>
+
+      <button id="save" >Register</button>
+      <button>Clear fields</button>
+    </form>
+    </div>
+</div>
+<div>
+    <div style="margin-left:40%;width: 54%; height: 300px; overflow-y: auto;font-size: 200%;">
+      <ol id="datalist" ></ol>
+    </div>
+
+</div>
+
+<div class="footer" align="right" style="position: bottom; margin-right: 10px;margin-top: 3%;"><p>Created by : Sairaj Adkar</p></div>
+
+<script src="tb.js"></script>
+
+</body>
+</html>
